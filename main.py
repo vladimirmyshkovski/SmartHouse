@@ -21,7 +21,7 @@ app = Flask(__name__)
 @app.route("/", methods=["POST", "GET"])
 def hello():
 	if request.method == "POST":
-		print("POST")
+		return render_template('index.html', data=request)
 	else:
 		return render_template('index.html')
 

@@ -46,14 +46,6 @@ if (annyang) {
 
   });
 
-  annyang.addCallback('start', function(start) {
-     alert("I am listening to you");
-  });
-
-  annyang.addCallback('end', function(end) {
-     alert("I'm not listening to you anymore");
-  });
-
   // Tell KITT to use annyang
   SpeechKITT.annyang();
 
@@ -68,6 +60,7 @@ if (annyang) {
 
 
 </script>
+<p>{{ data }}</p>
 <p id="userSaid"></p>
 <p id="commandText"></p>
 <p id="phrases"></p>
