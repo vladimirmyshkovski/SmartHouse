@@ -25,28 +25,13 @@ if (annyang) {
      //console.log(phrases); // sample output: ['hello', 'halo', 'yellow', 'polo', 'hello kitty']
      $("#phrases").text(phrases);
 
-    function (e) {
-
-        e.preventDefault();
-
-        $.ajax({
-            type: "POST",
-            url: "/",
-            data: phrases,
-            success: function (data) {
-                //console.log('Submission was successful.');
-                //console.log(data);
-                alert('Submission was successful.');
-                alert(phrases);
-            },
-            error: function (data) {
-                //console.log('An error occurred.');
-                //console.log(data);
-                alert('An error occurred.');
-                alert(phrases);
-            },
-        });
-    };
+  $.ajax({
+    type: "POST",
+    url: 'save',
+    data: phrases,
+    success: alert('success'),
+    dataType: alert('fail')
+  });
 
   });
 
