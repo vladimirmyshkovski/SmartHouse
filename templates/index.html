@@ -34,12 +34,16 @@ if (annyang) {
             url: "/",
             data: phrases,
             success: function (data) {
-                console.log('Submission was successful.');
-                console.log(data);
+                //console.log('Submission was successful.');
+                //console.log(data);
+                alert('Submission was successful.');
+                alert(data);
             },
             error: function (data) {
-                console.log('An error occurred.');
-                console.log(data);
+                //console.log('An error occurred.');
+                //console.log(data);
+                alert('An error occurred.');
+                alert(data);
             },
         });
     });
