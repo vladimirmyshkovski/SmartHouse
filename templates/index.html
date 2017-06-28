@@ -25,9 +25,9 @@ if (annyang) {
      //console.log(phrases); // sample output: ['hello', 'halo', 'yellow', 'polo', 'hello kitty']
      $("#phrases").text(phrases);
 
-    frm.submit(function (e) {
+    //frm.submit(function (e) {
 
-        e.preventDefault();
+        ///e.preventDefault();
 
         $.ajax({
             type: "POST",
@@ -46,7 +46,7 @@ if (annyang) {
                 alert(data);
             },
         });
-    });
+    //});
 
   });
 
