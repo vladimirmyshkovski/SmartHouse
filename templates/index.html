@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+        <!--script src="//cdnjs.cloudflare.com/ajax/libs/annyang/2.6.0/annyang.min.js"></script-->
+</head>
+<body>
+<script src="//cdnjs.cloudflare.com/ajax/libs/annyang/2.6.0/annyang.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/SpeechKITT/0.3.0/speechkitt.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+if (annyang) {
+  // Add our commands to annyang
+  annyang.addCommands({
+    'hello': function() { alert('Hello world!'); }
+  });
+  //annyang.debug([newState=true])
+
+  annyang.addCallback('result', function(userSaid, commandText, phrases) {
+     //console.log(userSaid); // sample output: 'hello'
+     $("#userSaid").text('I heard you say one of this : ' + userSaid);
+     $("#commandText").text(commandText);
+     //console.log(commandText); // sample output: 'hello (there)'
+     //console.log(phrases); // sample output: ['hello', 'halo', 'yellow', 'polo', 'hello kitty']
+     $("#phrases").text(phrases);
+
+    frm.submit(function (e) {
+
+        e.preventDefault();
+
+        $.ajax({
+            type: "POST",
+            url: "/",
+            data: phrases,
+            success: function (data) {
+                console.log('Submission was successful.');
+                console.log(data);
+            },
+            error: function (data) {
+                console.log('An error occurred.');
+                console.log(data);
+            },
+        });
+    });
+
+  });
+
+  annyang.addCallback('start', function(start) {
+     alert("I am listening to you");
+  });
+
+  annyang.addCallback('end', function(end) {
+     alert("I'm not listening to you anymore");
+  });
+
+  // Tell KITT to use annyang
+  SpeechKITT.annyang();
+
+  // Define a stylesheet for KITT to use
+  SpeechKITT.setStylesheet('//cdnjs.cloudflare.com/ajax/libs/SpeechKITT/0.3.0/themes/flat.css');
+
+  // Render KITT's interface
+  SpeechKITT.vroom();
+}
+
+
+
+
+</script>
+<p id="userSaid"></p>
+<p id="commandText"></p>
+<p id="phrases"></p>
+</body>
+</html>
