@@ -25,9 +25,9 @@ if (annyang) {
      //console.log(phrases); // sample output: ['hello', 'halo', 'yellow', 'polo', 'hello kitty']
      $("#phrases").text(phrases);
 
-    //frm.submit(function (e) {
+    function (e) {
 
-        ///e.preventDefault();
+        e.preventDefault();
 
         $.ajax({
             type: "POST",
@@ -37,16 +37,16 @@ if (annyang) {
                 //console.log('Submission was successful.');
                 //console.log(data);
                 alert('Submission was successful.');
-                alert(data);
+                alert(phrases);
             },
             error: function (data) {
                 //console.log('An error occurred.');
                 //console.log(data);
                 alert('An error occurred.');
-                alert(data);
+                alert(phrases);
             },
         });
-    //});
+    };
 
   });
 
