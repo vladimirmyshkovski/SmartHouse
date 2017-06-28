@@ -23,7 +23,14 @@ def hello():
 	if request.method == "POST":
 		print("POST")
 	else:
-    	return render_template('index.html')
+		return render_template('index.html')
+
+
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
+
+
+
 
 
 '''
@@ -46,13 +53,7 @@ def save():
 			filename = secure_filename(file.filename)
 			file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
 			return '123123'
-'''
 
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
-
-
-'''
 	AUDIO_FILE = path.join(path.dirname(path.realpath(__file__)), "english.wav")
 
 	r = sr.Recognizer()
