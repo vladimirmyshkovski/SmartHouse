@@ -27,8 +27,9 @@ def hello():
 	form = SpeachForm()
 	asd = 'TEST'
 	if request.method == "POST":
-		asd = form.text.data
-		return render_template('index.html', form=form, asd=asd)
+		if form.validate_on_submit():
+			asd = form.text.data
+			return render_template('index.html', form=form, asd=asd)
 	return render_template('index.html', form=form, asd=asd)
 
 
