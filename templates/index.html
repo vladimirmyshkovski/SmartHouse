@@ -14,13 +14,20 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/flatly/bootstrap.min.css" />
 
 
-<script type="text/javascript">
-$(document).ready(function(){
 
-    //var frm = $('#speachForm');
+
+<script type="text/javascript">
+if (annyang) {
+  annyang.start();
+  
+  annyang.addCallback('result', function(userSaid) {
     var frm = document.getElementById("speachForm");
-    
-    formSumbit = frm.submit(function (e) {
+    frm.text.value = userSaid;
+    //alert(frm.text.value);
+    //frm.submit();
+    //formSumbit();
+
+    frm.submit(function (e) {
         e.preventDefault();
         //frm.text.val('phrases');
         $.ajax({
@@ -38,21 +45,6 @@ $(document).ready(function(){
         });
     });
 
-})  
-
-
-</script>
-
-<script type="text/javascript">
-if (annyang) {
-  annyang.start();
-  
-  annyang.addCallback('result', function(userSaid) {
-    var frm = document.getElementById("speachForm");
-    frm.text.value = userSaid;
-    //alert(frm.text.value);
-    frm.submit();
-    //formSumbit();
   });
 
   // Tell KITT to use annyang
