@@ -10,6 +10,28 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/SpeechKITT/0.3.0/speechkitt.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script>
+
+    var frm = $('#speachForm');
+
+    formSumbit = frm.submit(function (e) {
+        alert(e);
+        e.preventDefault();
+        frm.text.val('phrases');
+        $.ajax({
+            type: frm.attr('method'),
+            url: frm.attr('action'),
+            data: frm.serialize(),
+            success: function (data) {
+                //console.log('Submission was successful.');
+                alert('phrases');
+            },
+            error: function (data) {
+                //console.log('An error occurred.');
+                alert('phrases');
+            },
+        });
+    });
+
 if (annyang) {
   // Add our commands to annyang
   annyang.addCommands({
@@ -17,37 +39,20 @@ if (annyang) {
   });
   //annyang.debug([newState=true])
 
-  annyang.addCallback('result', function(userSaid, commandText, phrases) {
-     //console.log(userSaid); // sample output: 'hello'
-     $("#userSaid").text('I heard you say one of this : ' + userSaid);
-     $("#commandText").text(commandText);
-     //console.log(commandText); // sample output: 'hello (there)'
-     //console.log(phrases); // sample output: ['hello', 'halo', 'yellow', 'polo', 'hello kitty']
-     $("#phrases").text(phrases);
-
-    var frm = $('#speachForm');
-
-    frm.submit(function (e) {
-
-        e.preventDefault();
-        frm.text.val(phrases);
-        $.ajax({
-            type: frm.attr('method'),
-            url: frm.attr('action'),
-            data: frm.serialize(),
-            success: function (data) {
-                //console.log('Submission was successful.');
-                alert(data);
-            },
-            error: function (data) {
-                //console.log('An error occurred.');
-                alert(data);
-            },
-        });
-    });
-
-  });
-
+  //annyang.addCallback('result', function(userSaid, commandText, phrases) {
+  //   //console.log(userSaid); // sample output: 'hello'
+  //   $("#userSaid").text('I heard you say one of this : ' + userSaid);
+  //   $("#commandText").text(commandText);
+  //   //console.log(commandText); // sample output: 'hello (there)'
+  //   //console.log(phrases); // sample output: ['hello', 'halo', 'yellow', 'polo', 'hello kitty']
+  //   $("#phrases").text(phrases);
+  //
+  //
+  //
+  //});
+  
+  annyang.addCallback('result', formSumbit, this);
+  
   // Tell KITT to use annyang
   SpeechKITT.annyang();
 
@@ -62,6 +67,17 @@ if (annyang) {
 
 
 </script>
+
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class=flashes>
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+
 <form id="speachForm" action="" method="post" name="login">
     {{ form.hidden_tag() }}
     <p style="display: none">
