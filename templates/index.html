@@ -14,7 +14,30 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/flatly/bootstrap.min.css" />
 
 
+<script type="text/javascript">
+  
+    //var frm = $('#speachForm');
+    var frm = document.getElementById("speachForm");
+    
+    formSumbit = frm.submit(function (e) {
+        e.preventDefault();
+        //frm.text.val('phrases');
+        $.ajax({
+            type: frm.attr('method'),
+            url: frm.attr('action'),
+            data: frm.serialize(),
+            success: function (data) {
+                //console.log('Submission was successful.');
+                alert('phrases');
+            },
+            error: function (data) {
+                //console.log('An error occurred.');
+                alert('phrases');
+            },
+        });
+    });
 
+</script>
 
 <script type="text/javascript">
 if (annyang) {
@@ -24,11 +47,7 @@ if (annyang) {
     var frm = document.getElementById("speachForm");
     frm.text.value = userSaid;
     alert(frm.text.value);
-    //frm.submit();
-    //formSumbit();
-
-
-
+    frm.submit();
   });
 
   // Tell KITT to use annyang
@@ -41,7 +60,6 @@ if (annyang) {
   SpeechKITT.vroom();
 }
 </script>
-
 <div class="container">
   <div class="row">
     {% with messages = get_flashed_messages() %}
