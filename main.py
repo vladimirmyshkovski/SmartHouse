@@ -25,11 +25,12 @@ app = Flask(__name__)
 @app.route("/", methods=["POST", "GET"])
 def hello():
 	form = SpeachForm()
+	asd = 'TEST'
 	if request.method == "POST":
 		if form.validate_on_submit():
 			asd = 'asdasdasdasd'
 			return render_template('index.html', form=form, asd=asd)
-	return render_template('index.html', form=form)
+	return render_template('index.html', form=form, asd=asd)
 
 
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
