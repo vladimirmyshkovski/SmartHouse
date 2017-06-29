@@ -43,8 +43,8 @@ if (annyang) {
 
   annyang.addCallback('resultMatch', function(userSaid, commandText, phrases) {
     frm.text.value = phrases;
-    //frm.submit();
-    formSumbit(phrases)
+    frm.submit();
+    //formSumbit(phrases);
   });
 
   // Tell KITT to use annyang
@@ -68,9 +68,10 @@ if (annyang) {
   {% endif %}
 {% endwith %}
 
-<form id="speachForm" action="" method="POST" style="display: none">
+<form id="speachForm" action="" method="post" style="display: none">
     {{ form.hidden_tag() }}
     {{ form.text(size=80) }}
+    <buttin type="submit"></buttin>
 </form>
 {{ asd }}
 <p id="userSaid"></p>
