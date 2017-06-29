@@ -27,7 +27,7 @@ def hello():
 	form = SpeachForm()
 	if request.method == "POST":
 		if form.validate_on_submit():
-			flash(form.text)
+			return render_template('index.html', form=form, asd=asd)
 	return render_template('index.html', form=form)
 
 
