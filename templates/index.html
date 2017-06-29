@@ -48,8 +48,7 @@ if (annyang) {
   annyang.addCallback('result', function(userSaid) {
     var frm = document.getElementById("speachForm");
     frm.text.value = userSaid;
-    //frm.submit();
-    ajaxform(userSaid);
+    frm.submit();
 
   });
 
