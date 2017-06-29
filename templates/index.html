@@ -15,15 +15,8 @@
 
 
 <script type="text/javascript">
-if (annyang) {
-  annyang.start();
-  
-  annyang.addCallback('result', function(userSaid) {
-    var frm = document.getElementById("speachForm");
-    frm.text.value = userSaid;
-    //frm.submit();
 
-    frm.submit(function (e) {
+ajaxform =     frm.submit(function (e) {
 
         e.preventDefault();
 
@@ -40,6 +33,18 @@ if (annyang) {
             },
         });
     });
+
+if (annyang) {
+  annyang.start();
+
+
+  
+  annyang.addCallback('result', function(userSaid) {
+    var frm = document.getElementById("speachForm");
+    frm.text.value = userSaid;
+    //frm.submit();
+
+    a = ajaxform;
 
   });
 
