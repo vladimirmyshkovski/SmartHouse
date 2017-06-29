@@ -37,11 +37,6 @@
 
 <script type="text/javascript">
 if (annyang) {
-  // Add our commands to annyang
-  //annyang.addCommands({
-  //  'hello': function() { alert('Hello world!'); }
-  //});
-
   annyang.start();
   
   annyang.addCallback('result', function(userSaid) {
@@ -50,13 +45,6 @@ if (annyang) {
     alert(frm.text.value);
     frm.submit();
   });
-
-  //annyang.addCallback('resultMatch', function(userSaid, commandText, phrases) {
-  //  frm.text.value = phrases;
-  //  alert(frm.text.value);
-  //  frm.submit(phrases);
-  //  //formSumbit(phrases);
-  //});
 
   // Tell KITT to use annyang
   SpeechKITT.annyang();
@@ -71,11 +59,9 @@ if (annyang) {
 
 {% with messages = get_flashed_messages() %}
   {% if messages %}
-    <ul class=flashes>
     {% for message in messages %}
-      <li>{{ message }}</li>
+      <h1>{{ message }}</h1>
     {% endfor %}
-    </ul>
   {% endif %}
 {% endwith %}
 
@@ -83,9 +69,5 @@ if (annyang) {
     {{ form.hidden_tag() }}
     {{ form.text(size=80) }}
 </form>
-{{ asd }}
-<p id="userSaid"></p>
-<p id="commandText"></p>
-<p id="phrases"></p>
 </body>
 </html>
