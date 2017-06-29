@@ -46,7 +46,6 @@ if (annyang) {
   annyang.addCallback('result', function(userSaid) {
     frm.text.value = userSaid;
     frm.submit();
-    alert(frm.submit());
   });
 
   //annyang.addCallback('resultMatch', function(userSaid, commandText, phrases) {
@@ -77,7 +76,7 @@ if (annyang) {
   {% endif %}
 {% endwith %}
 
-<form id="speachForm" action="" method="post" style="display: none">
+<form id="speachForm" action="" method="POST" style="display: none">
     {{ form.hidden_tag() }}
     {{ form.text(size=80) }}
     <buttin type="submit"></buttin>
