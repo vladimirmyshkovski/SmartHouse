@@ -28,6 +28,10 @@ def hello():
 	if request.method == "POST":
 		if form.validate_on_submit():
 			flash(form.text.data)
+		else:
+			flash('form not valid!')
+	else:
+		flash('not post!')
 			#return render_template('index.html', form=form)
 	return render_template('index.html', form=form)
 
