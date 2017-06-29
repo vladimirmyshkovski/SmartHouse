@@ -25,6 +25,7 @@ if (annyang) {
     //frm.submit();
 
     frm.submit(function (e) {
+        alert(frm.serialize())
         e.preventDefault();
         //frm.text.val('phrases');
         $.ajax({
