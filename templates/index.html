@@ -23,19 +23,17 @@ if (annyang) {
     frm.text.value = userSaid;
     //frm.submit();
 
-    frm.submit(function (userSaid) {
-        userSaid.preventDefault();
-        //frm.text.val('phrases');
+    frm.submit(function (e) {
+        alert('asd')
+        e.preventDefault();
         $.ajax({
             type: frm.attr('method'),
             url: frm.attr('action'),
             data: frm.serialize(),
             success: function (data) {
-                //console.log('Submission was successful.');
                 alert('SUCCESS');
             },
             error: function (data) {
-                //console.log('An error occurred.');
                 alert('ERROR');
             },
         });
