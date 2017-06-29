@@ -1,5 +1,5 @@
 git pull
 ../venv/bin/activate
-pip -r install requirements/base.txt
+pip install -r requirements/base.txt
 systemctl restart smarthouse
 systemctl restart nginx 
