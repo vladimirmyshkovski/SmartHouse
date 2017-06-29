@@ -51,8 +51,13 @@ if (annyang) {
   //
   //});
   
-  annyang.addCallback('result', formSumbit, this);
+  //annyang.addCallback('result', formSumbit, this);
   
+  annyang.addCallback('result', function(userSaid, commandText, phrases) {
+    $('.speachForm').text('There was an error!');
+    $('.speachForm').submit();
+  });
+
   // Tell KITT to use annyang
   SpeechKITT.annyang();
 
