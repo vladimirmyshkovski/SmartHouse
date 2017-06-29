@@ -23,8 +23,8 @@ if (annyang) {
     frm.text.value = userSaid;
     //frm.submit();
 
-    frm.submit(function (e) {
-        e.preventDefault();
+    frm.submit(function (userSaid) {
+        userSaid.preventDefault();
         //frm.text.val('phrases');
         $.ajax({
             type: frm.attr('method'),
