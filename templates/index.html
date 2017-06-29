@@ -19,7 +19,7 @@ $(document).ready(function(){
 
 var frm = document.getElementById("speachForm");
 
-      ajaxform = function() { frm.submit(function (e) {
+      ajaxform = function(e) { frm.submit(function (e) {
 
         e.preventDefault();
 
@@ -49,7 +49,7 @@ if (annyang) {
     var frm = document.getElementById("speachForm");
     frm.text.value = userSaid;
     //frm.submit();
-    ajaxform();
+    ajaxform(userSaid);
   });
 
   // Tell KITT to use annyang
