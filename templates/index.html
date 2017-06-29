@@ -45,7 +45,7 @@ if (annyang) {
   annyang.start();
   
   annyang.addCallback('result', function(userSaid) {
-    
+    var frm = document.getElementById("speachForm");
     frm.text.value = userSaid;
     alert(frm.text.value);
     //frm.submit();
