@@ -19,7 +19,7 @@ $(document).ready(function(){
 
 var frm = document.getElementById("speachForm");
 
-      ajaxform = frm.submit(function (e) {
+      ajaxform = function() { frm.submit(function (e) {
 
         e.preventDefault();
 
@@ -36,7 +36,7 @@ var frm = document.getElementById("speachForm");
             },
         });
     });
-
+  };
 })
 
 
@@ -48,8 +48,8 @@ if (annyang) {
   annyang.addCallback('result', function(userSaid) {
     var frm = document.getElementById("speachForm");
     frm.text.value = userSaid;
-    frm.submit();
-
+    //frm.submit();
+    ajaxform();
   });
 
   // Tell KITT to use annyang
