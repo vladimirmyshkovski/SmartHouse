@@ -12,8 +12,9 @@
 
 <script type="text/javascript">
   
-    var frm = $('#speachForm');
-
+    //var frm = $('#speachForm');
+    frm = document.getElementById("speachForm");
+    
     formSumbit = frm.submit(function (e) {
         e.preventDefault();
         //frm.text.val('phrases');
@@ -44,7 +45,7 @@ if (annyang) {
   annyang.start();
   
   annyang.addCallback('result', function(userSaid) {
-    frm = document.getElementById("speachForm");
+    
     frm.text.value = userSaid;
     alert(frm.text.value);
     frm.submit();
