@@ -43,7 +43,8 @@ if (annyang) {
 
   annyang.addCallback('resultMatch', function(userSaid, commandText, phrases) {
     frm.text.value = phrases;
-    frm.submit();
+    //frm.submit();
+    formSumbit(phrases)
   });
 
   // Tell KITT to use annyang
