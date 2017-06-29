@@ -41,8 +41,8 @@ if (annyang) {
     'hello': function() { alert('Hello world!'); }
   });
 
-  annyang.addCallback('resultMatch', function() {
-    frm.text.value = '123';
+  annyang.addCallback('resultMatch', function(userSaid, commandText, phrases) {
+    frm.text.value = phrases;
     alert(frm.text.value);
     frm.submit();
   });
