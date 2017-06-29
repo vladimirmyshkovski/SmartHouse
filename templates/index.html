@@ -15,8 +15,9 @@
 
 
 <script type="text/javascript">
+$(document).ready(function(){
 
-ajaxform =     frm.submit(function (e) {
+ajaxform = frm.submit(function (e) {
 
         e.preventDefault();
 
@@ -33,6 +34,9 @@ ajaxform =     frm.submit(function (e) {
             },
         });
     });
+  
+})
+
 
 if (annyang) {
   annyang.start();
