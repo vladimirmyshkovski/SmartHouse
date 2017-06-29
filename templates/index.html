@@ -42,8 +42,9 @@ if (annyang) {
   });
 
   annyang.addCallback('resultMatch', function() {
-    $('#speachForm')['text'].value = 'There was an error!';
-    $('#speachForm').submit();
+    frm['text'].val('There was an error!');
+    alert(frm['text'].val();
+    frm.submit();
   });
 
   // Tell KITT to use annyang
