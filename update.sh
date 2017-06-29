@@ -3,3 +3,4 @@ git pull
 pip install -r requirements/base.txt
 systemctl restart smarthouse
 systemctl restart nginx 
+systemctl status smarthouse
