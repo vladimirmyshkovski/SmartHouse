@@ -45,8 +45,9 @@ if (annyang) {
   
   annyang.addCallback('result', function(userSaid) {
     frm.text.value = userSaid;
-    //alert(frm.text.value);
+    alert(frm.text.value);
     frm.submit();
+    alert('Я КАЗАУ САБМИТ!!!!!!!!!!!!!!!');
   });
 
   //annyang.addCallback('resultMatch', function(userSaid, commandText, phrases) {
