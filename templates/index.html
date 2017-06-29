@@ -43,12 +43,17 @@ if (annyang) {
 
   // annyang.start();
   
-  annyang.addCallback('resultMatch', function(userSaid, commandText, phrases) {
-    frm.text.value = phrases;
-    alert(frm.text.value);
-    frm.submit(phrases);
-    //formSumbit(phrases);
+  annyang.addCallback('resultMatch', function(userSaid) {
+    frm.text.value = userSaid;
+    frm.submit();
   });
+
+  //annyang.addCallback('resultMatch', function(userSaid, commandText, phrases) {
+  //  frm.text.value = phrases;
+  //  alert(frm.text.value);
+  //  frm.submit(phrases);
+  //  //formSumbit(phrases);
+  //});
 
   // Tell KITT to use annyang
   SpeechKITT.annyang();
