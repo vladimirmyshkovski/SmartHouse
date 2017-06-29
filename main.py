@@ -27,9 +27,9 @@ def hello():
 	form = SpeachForm()
 	if request.method == "POST":
 		if form.validate_on_submit():
-			flash(form.text.data)
-			bot_response = client.run_actions('mysession', form.text.data, {})
-
+			wit_response = client.message(str(form.text.data))
+			flash('I heard you say: ' + str(form.text.data))
+			flash('Yay, got Wit.ai response: ' + str(wit_response))
 	return render_template('index.html', form=form)
 
 
