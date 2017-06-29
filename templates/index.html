@@ -41,7 +41,7 @@ if (annyang) {
     'hello': function() { alert('Hello world!'); }
   });
 
-  annyang.addCallback('error', function() {
+  annyang.addCallback('resultMatch', function() {
     $('#speachForm').text.value = 'There was an error!';
     $('#speachForm').submit();
   });
