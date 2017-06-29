@@ -21,11 +21,9 @@ if (annyang) {
   annyang.addCallback('result', function(userSaid) {
     var frm = document.getElementById("speachForm");
     frm.text.value = userSaid;
-    alert(frm.text.value);
     //frm.submit();
 
     frm.submit(function (e) {
-        alert(frm.serialize())
         e.preventDefault();
         //frm.text.val('phrases');
         $.ajax({
@@ -34,11 +32,11 @@ if (annyang) {
             data: frm.serialize(),
             success: function (data) {
                 //console.log('Submission was successful.');
-                alert('phrases');
+                alert('SUCCESS');
             },
             error: function (data) {
                 //console.log('An error occurred.');
-                alert('phrases');
+                alert('ERROR');
             },
         });
     });
