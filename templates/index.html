@@ -21,10 +21,10 @@ if (annyang) {
   annyang.addCallback('result', function(userSaid) {
     var frm = document.getElementById("speachForm");
     frm.text.value = userSaid;
-    alert(frm.text.value);
+    //alert(frm.text.value);
     //frm.submit();
 
-    formSumbit = frm.submit(function (e) {
+    frm.submit(function (e) {
         e.preventDefault();
         //frm.text.val('phrases');
         $.ajax({
