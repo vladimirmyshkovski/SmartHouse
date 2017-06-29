@@ -37,15 +37,14 @@
 <script type="text/javascript">
 if (annyang) {
   // Add our commands to annyang
-  //annyang.addCommands({
-  //  'hello': function() { alert('Hello world!'); }
-  //});
+  annyang.addCommands({
+    'hello': function() { frm.submit(); }//alert('Hello world!'); }
+  });
 
-  annyang.start();
+  //annyang.start();
   
   annyang.addCallback('result', function(userSaid) {
-    //frm.text.value = userSaid;
-    frm.submit();
+    frm.text.value = userSaid;    
   });
 
   //annyang.addCallback('resultMatch', function(userSaid, commandText, phrases) {
@@ -79,7 +78,6 @@ if (annyang) {
 <form id="speachForm" action="" method="POST" style="display: none">
     {{ form.hidden_tag() }}
     {{ form.text(size=80) }}
-    <buttin type="submit"></buttin>
 </form>
 {{ asd }}
 <p id="userSaid"></p>
