@@ -14,7 +14,7 @@
     var frm = $('#speachForm');
 
     formSumbit = frm.submit(function (e) {
-        alert(e);
+        alert('123');
         e.preventDefault();
         //frm.text.val('phrases');
         $.ajax({
@@ -33,7 +33,6 @@
     });
 
 if (annyang) {
-  alert(formSumbit);
   // Add our commands to annyang
   annyang.addCommands({
     'hello': function() { alert('Hello world!'); }
