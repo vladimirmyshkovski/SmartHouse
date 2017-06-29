@@ -14,7 +14,6 @@
     var frm = $('#speachForm');
 
     formSumbit = frm.submit(function (e) {
-        alert('123');
         e.preventDefault();
         //frm.text.val('phrases');
         $.ajax({
@@ -33,6 +32,7 @@
     });
 
 if (annyang) {
+  alert(formSumbit);
   // Add our commands to annyang
   annyang.addCommands({
     'hello': function() { alert('Hello world!'); }
@@ -53,11 +53,6 @@ if (annyang) {
   
   //annyang.addCallback('result', formSumbit, this);
   
-  //annyang.addCallback('result', function(userSaid, commandText, phrases) {
-  //  $('#speachForm').text('There was an error!');
-  //  $('#speachForm').submit();
-  //});
-
   // Tell KITT to use annyang
   SpeechKITT.annyang();
 
