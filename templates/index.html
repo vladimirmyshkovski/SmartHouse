@@ -72,10 +72,7 @@ if (annyang) {
 
 <form id="speachForm" action="" method="POST" name="login">
     {{ form.hidden_tag() }}
-    <p style="display: none">
-        Please enter your OpenID:<br>
-        {{ form.text(size=80) }}<br>
-    </p>
+    {{ form.text(size=80) }}
 </form>
 {{ asd }}
 <p id="userSaid"></p>
