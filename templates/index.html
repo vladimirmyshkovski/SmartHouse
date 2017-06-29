@@ -23,9 +23,11 @@ if (annyang) {
   annyang.addCallback('result', function(userSaid) {
     var frm = document.getElementById("speachForm");
     frm.text.value = userSaid;
-    //alert(frm.text.value);
-    frm.submit();
+    alert(frm.text.value);
+    //frm.submit();
     //formSumbit();
+
+
 
   });
 
@@ -39,6 +41,7 @@ if (annyang) {
   SpeechKITT.vroom();
 }
 </script>
+
 <div class="container">
   <div class="row">
     {% with messages = get_flashed_messages() %}
