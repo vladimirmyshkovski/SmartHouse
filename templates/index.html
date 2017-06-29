@@ -35,19 +35,11 @@
 
 <script type="text/javascript">
 if (annyang) {
-  alert('annyang')
   // Add our commands to annyang
   annyang.addCommands({
     'hello': function() { alert('Hello world!'); }
   });
 
-  annyang.addCallback('result', function(userSaid, commandText, phrases) {
-     $("#userSaid").text('I heard you say one of this : ' + userSaid);
-     $("#commandText").text(commandText);
-     $("#phrases").text(phrases);
-  });
-  
-  
   // Tell KITT to use annyang
   SpeechKITT.annyang();
 
