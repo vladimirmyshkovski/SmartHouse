@@ -25,13 +25,26 @@ if (annyang) {
      //console.log(phrases); // sample output: ['hello', 'halo', 'yellow', 'polo', 'hello kitty']
      $("#phrases").text(phrases);
 
-  $.ajax({
-    type: "POST",
-    url: 'save',
-    data: phrases,
-    success: alert('success'),
-    dataType: alert('fail')
-  });
+    var frm = $('#speachForm');
+
+    frm.submit(function (e) {
+
+        e.preventDefault();
+        frm.text.val(phrases);
+        $.ajax({
+            type: frm.attr('method'),
+            url: frm.attr('action'),
+            data: frm.serialize(),
+            success: function (data) {
+                //console.log('Submission was successful.');
+                alert(data);
+            },
+            error: function (data) {
+                //console.log('An error occurred.');
+                alert(data);
+            },
+        });
+    });
 
   });
 
@@ -49,7 +62,14 @@ if (annyang) {
 
 
 </script>
-<p>{{ data }}</p>
+<form id="speachForm" action="" method="post" name="login">
+    {{ form.hidden_tag() }}
+    <p style="display: none">
+        Please enter your OpenID:<br>
+        {{ form.text(size=80) }}<br>
+    </p>
+</form>
+
 <p id="userSaid"></p>
 <p id="commandText"></p>
 <p id="phrases"></p>

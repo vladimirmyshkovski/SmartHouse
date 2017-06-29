@@ -5,6 +5,9 @@ import speech_recognition as sr
 import os
 from os import path
 
+from flask.ext.wtf import Form
+from wtforms import TextField
+from wtforms.validators import Required
 
 WIT_AI_KEY = "UZ6QX46MOWTVGUHG4ZLSBVG7ADIJAL7A"  # Wit.ai keys are 32-character uppercase alphanumeric strings
 
@@ -14,16 +17,18 @@ ALLOWED_EXTENSIONS = set(['wav'])
 
 
 
-
+class SpeachForm(Form):
+    text = TextField('openid', validators = [Required()])
 
 app = Flask(__name__)
 
 @app.route("/", methods=["POST", "GET"])
 def hello():
+	form = SpeachForm()
 	if request.method == "POST":
-		return render_template('index.html', data=request)
-	else:
-		return render_template('index.html')
+		if form.validate_on_submit():
+			flash(form.text)
+	return render_template('index.html', form=form)
 
 
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
