@@ -37,11 +37,11 @@
 <script type="text/javascript">
 if (annyang) {
   // Add our commands to annyang
-  // annyang.addCommands({
-  //   'hello': function() { alert('Hello world!'); }
-  // });
+  annyang.addCommands({
+    'hello': function() { alert('Hello world!'); }
+  });
 
-  annyang.start();
+  // annyang.start();
   
   annyang.addCallback('resultMatch', function(userSaid, commandText, phrases) {
     frm.text.value = phrases;
