@@ -24,17 +24,19 @@ if (annyang) {
     //frm.submit();
 
     frm.submit(function (e) {
-        alert('asd')
+
         e.preventDefault();
+
         $.ajax({
             type: frm.attr('method'),
             url: frm.attr('action'),
             data: frm.serialize(),
+            async: true,
             success: function (data) {
-                alert('SUCCESS');
+                alert(data);
             },
             error: function (data) {
-                alert('ERROR');
+                alert(data);
             },
         });
     });
