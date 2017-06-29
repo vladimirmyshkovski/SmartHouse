@@ -41,6 +41,11 @@ if (annyang) {
     'hello': function() { alert('Hello world!'); }
   });
 
+  annyang.addCallback('error', function() {
+    $('#speachForm').text.value = 'There was an error!';
+    $('#speachForm').submit();
+  });
+
   // Tell KITT to use annyang
   SpeechKITT.annyang();
 
