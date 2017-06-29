@@ -42,7 +42,7 @@ if (annyang) {
   });
 
   annyang.addCallback('resultMatch', function() {
-    $('#speachForm').text.value = 'There was an error!';
+    $('#speachForm')['text'].value = 'There was an error!';
     $('#speachForm').submit();
   });
 
