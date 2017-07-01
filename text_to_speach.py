@@ -13,7 +13,7 @@ import settings as s
 	#print(json.dumps(text_to_speech.voices(), indent=2))
 
 def text_to_speach(text):
-	with open(join(dirname(__file__), 'static/resources/output.wav'),
+	with open(join(dirname(__file__), 'static/resources/{}.wav'.format(str(text))),
 	          'wb') as audio_file:
 	    audio_file.write(
 	        s.text_to_speech.synthesize('I heard you say: ' + str(text), accept='audio/wav',
