@@ -76,10 +76,10 @@ if (annyang) {
     {% endwith %}
   </div>
 </div>
-<form id="speachForm" action="" method="POST">
+<form id="speachForm" action="" method="POST" style="display: none">
     {{ form.hidden_tag() }}
     {{ form.text(size=80) }}
 </form>
-<audio {% if play %} src="{{ url_for('static', filename='{}.wav'.format(filename)) }}" type="audio/wav" autoplay controls {% endif %} preload="none" style="display: none"></audio>
+<audio {% if play %} src="{{ url_for('static', filename='resources/{}.wav'.format(filename)) }}" type="audio/wav" autoplay {% endif %} style="display: none" controls></audio>
 </body>
 </html>
