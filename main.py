@@ -24,9 +24,10 @@ app = Flask(__name__)
 @app.route("/", methods=["POST", "GET"])
 def hello():
 	form = SpeachForm()
-	filename = generator()
+	filename = ''
 	if request.method == "POST":
 		if form.validate_on_submit():
+			filename = generator()
 			wit_response = client.message(str(form.text.data))
 			response = nlu(form.text.data)
 			flash('I heard you say: ' + str(form.text.data))
