@@ -12,9 +12,14 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/flatly/bootstrap.min.css" />
 
 </head>
-<body onload="document.getElementById('player').play()">
+<body>
 
 <script type="text/javascript">
+window.onload = function () {
+
+  document.getElementById('player').play();
+
+}
 if (annyang) {
 
   // Start listening.
@@ -49,7 +54,7 @@ if (annyang) {
     {% endwith %}
   </div>
 </div>
-<form id="speachForm" action="" method="POST">
+<form id="speachForm" action="" method="POST" style="display: none">
     {{ form.hidden_tag() }}
     {{ form.text(size=255) }}
 </form>
