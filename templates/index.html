@@ -36,11 +36,12 @@ if (annyang) {
   SpeechKITT.vroom();
 }
 
-
+window.onload = function () {
     createjs.Sound.registerSound("{{ url_for('static', filename='resources/{}.wav'.format(filename)) }}", "x");
     setTimeout(function () {
         createjs.Sound.play("x");
-    }, 100)
+    }, 500)
+  }
 </script>
 <div class="container">
   <div class="row">
