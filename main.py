@@ -13,7 +13,7 @@ from main_wit import client
 from text_to_speach import text_to_speach
 from natural_language_understanding import nlu
 import settings as s
-
+import os
 
 
 class SpeachForm(FlaskForm):
@@ -27,11 +27,12 @@ def hello():
 	if request.method == "POST":
 		if form.validate_on_submit():
 			wit_response = client.message(str(form.text.data))
+			response = nlu(form.text.data)
+			filename = text_to_speach(form.text.data)
 			flash('I heard you say: ' + str(form.text.data))
 			flash('Yay, got Wit.ai response: ' + str(wit_response))
-			flash('I understand: ' + nlu(form.text.data))
-			text_to_speach(form.text.data)
-			return render_template('index.html', form=form, play=True, response=response, file=str(form.text.data))
+			flash('I understand: ' + response)
+			return render_template('index.html', form=form, play=True, filename=filename)
 	return render_template('index.html', form=form)
 
 
