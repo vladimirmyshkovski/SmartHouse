@@ -1,5 +1,6 @@
 from watson_developer_cloud import TextToSpeechV1
 from watson_developer_cloud import NaturalLanguageUnderstandingV1
+from watson_developer_cloud import ConversationV1
 import os
 from os import path
 
@@ -18,3 +19,8 @@ natural_language_understanding = NaturalLanguageUnderstandingV1(
     version='2017-02-27',
     username='a334c814-adce-4f1f-b0ea-3ffff5b09598',
     password='0SbC5er0IOg3')
+
+conversation = ConversationV1(
+    username='96d73750-dfec-48c3-861a-7760620345f2',
+    password='3aTgFvJLC37Z',
+    version='2017-04-21')

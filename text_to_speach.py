@@ -16,7 +16,7 @@ def text_to_speach(text, filename):
 	with open(join(dirname(__file__), 'static/resources/{}.wav'.format(filename)),
 	          'wb') as audio_file:
 	    audio_file.write(
-	        s.text_to_speech.synthesize('I heard you say: ' + str(text), accept='audio/wav',
+	        s.text_to_speech.synthesize(str(text), accept='audio/wav',
 	                                  voice="en-US_AllisonVoice"))
 	print(
 	    json.dumps(s.text_to_speech.pronunciation(
