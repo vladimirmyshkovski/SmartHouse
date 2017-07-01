@@ -12,6 +12,8 @@ from os import path
 
 from main_wit import client
 
+from text_to_speach import text_to_speach
+
 UPLOAD_FOLDER = os.path.dirname(os.path.realpath(__file__))
 ALLOWED_EXTENSIONS = set(['wav'])
 
@@ -30,6 +32,8 @@ def hello():
 			wit_response = client.message(str(form.text.data))
 			flash('I heard you say: ' + str(form.text.data))
 			flash('Yay, got Wit.ai response: ' + str(wit_response))
+			text_to_speach(form.text.data)
+			return render_template('index.html', form=form, flag=True)
 	return render_template('index.html', form=form)
 
 
