@@ -74,11 +74,16 @@ if (annyang) {
       {% endif %}
     {% endwith %}
   </div>
+  {% if r %}
+    <div class="row">
+      {{ r }}
+    </div>
+  {% endif %}
 </div>
 <form id="speachForm" action="" method="POST" style="display: none">
     {{ form.hidden_tag() }}
     {{ form.text(size=80) }}
 </form>
-<audio {% if play %} src="{{ url_for('static', filename='resources/output.wav') }}" autoplay {% endif %}></audio>
+<audio {% if play %} src="{{ url_for('static', filename='resources/output.wav') }}" autoplay {% endif %} style="display: none"></audio>
 </body>
 </html>

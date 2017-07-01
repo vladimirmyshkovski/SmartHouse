@@ -7,15 +7,12 @@ from wtforms import TextField
 from wtforms.validators import Required
 
 import speech_recognition as sr
-import os
-from os import path
 
 from main_wit import client
 
 from text_to_speach import text_to_speach
-
-UPLOAD_FOLDER = os.path.dirname(os.path.realpath(__file__))
-ALLOWED_EXTENSIONS = set(['wav'])
+from natural_language_understanding import nlu
+import settings as s
 
 
 
@@ -29,13 +26,14 @@ def hello():
 	form = SpeachForm()
 	if request.method == "POST":
 		if form.validate_on_submit():
-			wit_response = client.message(str(form.text.data))
-			flash('I heard you say: ' + str(form.text.data))
-			flash('Yay, got Wit.ai response: ' + str(wit_response))
-			text_to_speach(form.text.data)
-			return render_template('index.html', form=form, play=True)
+			#wit_response = client.message(str(form.text.data))
+			#flash('I heard you say: ' + str(form.text.data))
+			#flash('Yay, got Wit.ai response: ' + str(wit_response))
+			#text_to_speach(form.text.data)
+			r = str('I understand: ') + nlu(form.text.data)
+			return render_template('index.html', form=form, play=True, r=r)
 	return render_template('index.html', form=form)
 
 
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
+app.config['UPLOAD_FOLDER'] = s.UPLOAD_FOLDER
+app.secret_key = s.SECRET_KEY
