@@ -16,7 +16,7 @@
 
 <script type="text/javascript">
 if (annyang) {
-  
+
   // Start listening.
   annyang.start();
 
@@ -53,6 +53,6 @@ if (annyang) {
     {{ form.hidden_tag() }}
     {{ form.text(size=255) }}
 </form>
-<audio {% if play %} src="{{ url_for('static', filename='resources/{}.wav'.format(filename)) }}" type="audio/wav" autoplay {% endif %} style="display: none" controls></audio>
+<audio {% if play %} src="{{ url_for('static', filename='resources/{}.wav'.format(filename)) }}" type="audio/wav" autoplay {% endif %} controls></audio>
 </body>
 </html>
