@@ -14,7 +14,7 @@ from text_to_speach import text_to_speach
 from natural_language_understanding import nlu
 import settings as s
 import os
-
+from utils import generator
 
 class SpeachForm(FlaskForm):
     text = TextField('openid', validators = [Required()])
@@ -24,16 +24,17 @@ app = Flask(__name__)
 @app.route("/", methods=["POST", "GET"])
 def hello():
 	form = SpeachForm()
+	filename = generator()
 	if request.method == "POST":
 		if form.validate_on_submit():
 			wit_response = client.message(str(form.text.data))
 			response = nlu(form.text.data)
-			filename = text_to_speach(form.text.data)
 			flash('I heard you say: ' + str(form.text.data))
 			flash('Yay, got Wit.ai response: ' + str(wit_response))
 			flash('I understand: ' + response)
+			text_to_speach(form.text.data, filename)
 			return render_template('index.html', form=form, play=True, filename=filename)
-	return render_template('index.html', form=form)
+	return render_template('index.html', form=form, play=True, filename=filename )
 
 
 app.config['UPLOAD_FOLDER'] = s.UPLOAD_FOLDER
