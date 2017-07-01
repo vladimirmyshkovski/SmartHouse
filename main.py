@@ -33,7 +33,7 @@ def hello():
 			flash('I heard you say: ' + str(form.text.data))
 			flash('Yay, got Wit.ai response: ' + str(wit_response))
 			text_to_speach(form.text.data)
-			return render_template('index.html', form=form, flag=True)
+			return render_template('index.html', form=form, play=True)
 	return render_template('index.html', form=form)
 
 
