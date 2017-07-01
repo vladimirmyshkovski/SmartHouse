@@ -29,8 +29,8 @@ def hello():
 			wit_response = client.message(str(form.text.data))
 			flash('I heard you say: ' + str(form.text.data))
 			flash('Yay, got Wit.ai response: ' + str(wit_response))
+			flash('I understand: ' + nlu(form.text.data))
 			text_to_speach(form.text.data)
-			response = str('I understand: ') + nlu(form.text.data)
 			return render_template('index.html', form=form, play=True, response=response, file=str(form.text.data))
 	return render_template('index.html', form=form)
 
