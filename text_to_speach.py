@@ -11,7 +11,7 @@ import settings as s
 
 
 def text_to_speach(text, filename):
-	print(json.dumps(s.text_to_speech.voices(), indent=2))
+	#print(json.dumps(s.text_to_speech.voices(), indent=2))
 
 	with open(join(dirname(__file__), 'static/resources/{}.wav'.format(filename)),
 	          'wb') as audio_file:
