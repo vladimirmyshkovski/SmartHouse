@@ -24,3 +24,4 @@ watson-developer-cloud==0.26.0
 Werkzeug==0.12.2
 wit==4.2.0
 WTForms==2.1
+ujson
