@@ -10,5 +10,6 @@ def nlu(text):
 	    features=[
 	    features.Emotion(), features.Concepts(), 
 	    features.Categories(), features.Entities(), features.Keywords(),
-	    features.SemanticRoles(), features.Relations(), features.Sentiment()])
+	    features.SemanticRoles(), features.Relations(), features.Sentiment()],
+	    language='en')
 	return json.dumps(response, indent=2)
