@@ -1,7 +1,7 @@
 # FLASK IMPORTS
 from flask import Flask, request, redirect, url_for, render_template, flash
 from werkzeug.utils import secure_filename
-from flask import session
+from flask import session, g
 #from flask_socketio import SocketIO
 #######################################
 # BOTS IMPORTS 
@@ -28,11 +28,12 @@ from .settings import SECRET_KEY, UPLOAD_FOLDER
 
 app = Flask(__name__)
 
-
 @app.route("/", methods=["POST", "GET"])
 def hello():
 	form = SpeachForm()
 	filename = ''
+	if not 'context' in session:
+		session['context'] = None
 	if request.method == "POST":
 		if form.validate_on_submit():
 			filename = generator()
@@ -41,10 +42,10 @@ def hello():
 			if answer:
 				text_to_speach(answer, filename)
 			else:
-				answer = json.loads(conversation(form.text.data))
+				answer = json.loads(conversation(form.text.data, context=session['context']))
+				session['context'] = answer['context']
 				answer = answer['output']['text'][0]
 				text_to_speach(answer, filename)
-			print(answer) 
 			return render_template('index.html', form=form, play=True, filename=filename)
 	return render_template('index.html', form=form, play=True, filename=filename )
 
