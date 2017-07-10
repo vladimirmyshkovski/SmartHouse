@@ -42,7 +42,7 @@ def hello():
 			answer = json.loads(conversation(form.text.data, context=session['context']))
 			session['context'] = answer['context']
 			if answer['intents']:
-				#print(answer['intents'][0]['intent'])
+				print(answer['intents'][0]['intent'])
 			if answer['entities']:
 				#print(answer['entities'][0]['entity'])
 				#print(answer['entities'][0]['value'])
