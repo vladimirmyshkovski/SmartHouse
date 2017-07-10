@@ -4,7 +4,6 @@ import watson_developer_cloud.natural_language_understanding.features.v1 as \
 from ..settings import natural_language_understanding as n
 
 def nlu(text):
-	print('IN WATSON : ' + str(text))
 	response = n.analyze(
 	    text=text,
 	    features=[

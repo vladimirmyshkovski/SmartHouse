@@ -42,6 +42,9 @@ def hello():
 		if form.validate_on_submit():
 			filename = generator()
 			data = json.loads(nlu(form.text.data))
+			answer = json.loads(conversation(form.text.data))
+			print(answer)
+			'''
 			try:
 				text_to_speach(weather(data))
 			except:
@@ -51,6 +54,7 @@ def hello():
 				text_to_speach(answer, filename)
 			except:
 				pass
+			'''
 			return render_template('index.html', form=form, play=True, filename=filename)
 	return render_template('index.html', form=form, play=True, filename=filename )
 

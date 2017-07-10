@@ -36,16 +36,33 @@ def hello():
 		session['context'] = None
 	if request.method == "POST":
 		if form.validate_on_submit():
+			print(session['context'])
 			filename = generator()
 			question = json.loads(nlu(form.text.data))
+			answer = json.loads(conversation(form.text.data, context=session['context']))
+			session['context'] = answer['context']
+			if answer['intents']:
+				#print(answer['intents'][0]['intent'])
+			if answer['entities']:
+				#print(answer['entities'][0]['entity'])
+				#print(answer['entities'][0]['value'])
+				city = answer['entities'][0]['value']
+				answer = weather(city)
+			#print('INTENT IS: ' + str(answer['intents'][0]['intent']))
+			#if answer['intents'][0]['intent'] = 'weather':
+			#	answer = weather(question)
+			#	if answer:
+			#		text_to_speach(answer, filename)
+			#print('INTENT CONFIDENCE IS: ' + str(answer['intents'][0]['confidence']))
+			'''
 			answer = weather(question)
 			if answer:
 				text_to_speach(answer, filename)
 			else:
 				answer = json.loads(conversation(form.text.data, context=session['context']))
-				session['context'] = answer['context']
-				answer = answer['output']['text'][0]
-				text_to_speach(answer, filename)
+			'''
+			text_to_speach(answer, filename)
+			
 			return render_template('index.html', form=form, play=True, filename=filename)
 	return render_template('index.html', form=form, play=True, filename=filename )
 
