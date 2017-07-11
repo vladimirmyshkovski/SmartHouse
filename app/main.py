@@ -36,18 +36,18 @@ def hello():
 		session['context'] = None
 	if request.method == "POST":
 		if form.validate_on_submit():
-			print(session['context'])
 			filename = generator()
 			question = json.loads(nlu(form.text.data))
 			answer = json.loads(conversation(form.text.data, context=session['context']))
 			session['context'] = answer['context']
-			if answer['intents']:
-				print(answer['intents'][0]['intent'])
-			if answer['entities']:
-				#print(answer['entities'][0]['entity'])
-				#print(answer['entities'][0]['value'])
-				city = answer['entities'][0]['value']
-				answer = weather(city)
+			if answer['intents'][0]['intent'] == 'weather':
+				if answer['entities']:
+					#print('ENTITY IS: ' + str(answer['entities'][0]['entity']))
+					#print('VALUE IS: ' + str(answer['entities'][0]['value']))
+					city = answer['entities'][0]['value']
+					answer = weather(city)
+			else:
+				answer = answer['output']['text']
 			#print('INTENT IS: ' + str(answer['intents'][0]['intent']))
 			#if answer['intents'][0]['intent'] = 'weather':
 			#	answer = weather(question)
