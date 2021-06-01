@@ -25,7 +25,7 @@ scipy==0.19.1
 six==1.10.0
 SpeechRecognition==3.7.1
 ujson==1.35
-urllib3==1.21.1
+urllib3==1.26.5
 watson-developer-cloud==0.26.0
 Werkzeug==0.12.2
 wit==4.2.0
