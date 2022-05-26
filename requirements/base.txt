@@ -24,7 +24,7 @@ requests==2.18.1
 scipy==0.19.1
 six==1.10.0
 SpeechRecognition==3.7.1
-ujson==1.35
+ujson==5.2.0
 urllib3==1.21.1
 watson-developer-cloud==0.26.0
 Werkzeug==0.12.2
